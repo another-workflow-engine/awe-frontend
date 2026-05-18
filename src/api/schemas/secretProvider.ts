@@ -23,6 +23,14 @@ export const SecretProvidersResponseSchema = z.object({
   secretProviders: z.array(SecretProviderSchema),
 });
 
+export const SecretKeysResponseSchema = z.object({
+  secrets: z.array(z.object({
+    secret: z.string(),
+    referenceId: z.string().nullable(),
+  })),
+});
+
 export type SecretProvider = z.infer<typeof SecretProviderSchema>;
 export type SecretProvidersResponse = z.infer<typeof SecretProvidersResponseSchema>;
 export type InfisicalConfiguration = z.infer<typeof InfisicalConfigurationSchema>;
+export type SecretKeysResponse = z.infer<typeof SecretKeysResponseSchema>;
